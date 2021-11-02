@@ -10,9 +10,9 @@ INC=-I ./inc
 
 .SECONDARY:
 
-all: $(EXE) clean_obj
+all: $(EXE)
 
-%.elf: $(OBJ) $(EXEOBJ)
+./exe/%.elf: $(OBJ) ./exesrc/%.o
 	gcc $^ -o $@ -lm
 
 %.o: %.c
@@ -31,16 +31,13 @@ print:
 	@echo ${OBJ}
 	@echo ${EXEOBJ}
 
-run: $(EXE)
-	./exe/*.elf
+run:
+	for f in ${EXE} ; do $$f; done
 
 
 # PROBLEMI / PITANJA
 #
 #	1. mogu li brisati samo .o datoteke koje postoje (trenutno pokrenem naredbu za brisanje svih, koja se uvijek
-#	   izvede, a samo ce postojati .o datoteke za .c datoteke u kojima je bilo promjena)
-#	2. kada povezujem .o datoteke u pojedinu .elf datoteku u naredbu su ukljucene i sve .o datoteke iz EXEOBJ  iako nam
-#	   ne trebaju, treba nam samo jedna koja se odnosi na program koji trenutno poveZujemo
-#
-#
+#	   izvede, a samo ce postojati .o datoteke za .elf datoteke u kojima je bilo promjena)
+
 
