@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <math.h>
 #include <cmplx.h>	
 
 void cmplx_div(cmplx_t a, cmplx_t b, cmplx_t c){
